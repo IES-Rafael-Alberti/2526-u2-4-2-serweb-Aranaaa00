@@ -9,57 +9,57 @@ Este documento recopila todas las evidencias y respuestas de la practica.
 ### Fase 1: Instalacion y configuracion
 
 1) Servicio Nginx activo
-- Que demuestra:
-- Comando:
-- Evidencia:
+- Que demuestra: El servidor Nginx esta corriendo correctamente dentro del contenedor Docker
+- Comando: `docker compose ps`
+- Evidencia: ![Nginx activo](./evidencias/01-nginx-activo.png)
 
 2) Configuracion cargada
-- Que demuestra:
-- Comando:
-- Evidencia:
+- Que demuestra: El archivo de configuracion personalizado (default.conf) esta correctamente montado en el contenedor
+- Comando: `docker exec nginx-web ls -la /etc/nginx/conf.d/`
+- Evidencia: ![Configuracion cargada](./evidencias/02-configuracion-cargada.png)
 
 3) Resolucion de nombres
-- Que demuestra:
-- Evidencia:
+- Que demuestra: El archivo hosts de Windows esta configurado para resolver nombres personalizados (127.0.0.1 miweb.local)
+- Evidencia: ![Resolucion de nombres](./evidencias/03-resolucion-nombres.png)
 
 4) Contenido Web
-- Que demuestra:
-- Evidencia:
+- Que demuestra: La pagina web personalizada de Cloud Academy se muestra correctamente (no es la pagina por defecto de Nginx)
+- Evidencia: ![Contenido Web](./evidencias/03-resolucion-nombres.png)
 
 ### Fase 2: Transferencia SFTP (Filezilla)
 
 5) Conexion SFTP exitosa
-- Que demuestra:
-- Evidencia:
+- Que demuestra: FileZilla se conecta correctamente al servidor SFTP usando localhost:2222 con credenciales usuario/password
+- Evidencia: ![Conexion SFTP](./evidencias/05-conexion-sftp.png)
 
 6) Permisos de escritura
-- Que demuestra:
-- Evidencia:
+- Que demuestra: Los archivos se pueden subir por SFTP sin errores de permisos
+- Evidencia: ![Permisos escritura](./evidencias/06-permiso-escritura.png)
 
 ### Fase 3: Infraestructura Docker
 
 7) Contenedores activos
-- Que demuestra:
-- Comando:
-- Evidencia:
+- Que demuestra: Ambos contenedores (nginx-web y sftp-server) estan corriendo simultaneamente con sus puertos mapeados
+- Comando: `docker compose ps`
+- Evidencia: ![Contenedores activos](./evidencias/01-nginx-activo.png)
 
 8) Persistencia (Volumen compartido)
-- Que demuestra:
-- Evidencia:
+- Que demuestra: Los archivos subidos por SFTP aparecen automaticamente en la web gracias al volumen compartido shared-data
+- Evidencia: ![Persistencia volumen](./evidencias/07-persistencia-volumen.png)
 
 9) Despliegue multi-sitio
-- Que demuestra:
-- Evidencia:
+- Que demuestra: El servidor web sirve multiples sitios - la web principal en / y el reloj en /reloj
+- Evidencia: ![Reloj funcionando](./evidencias/08-multisitio-reloj.png)
 
 ### Fase 4: Seguridad HTTPS
 
 10) Cifrado SSL
-- Que demuestra:
-- Evidencia:
+- Que demuestra: El servidor responde por HTTPS con certificados SSL autofirmados correctamente configurados
+- Evidencia: ![Cifrado SSL](./evidencias/09-cifrado-ssl.png)
 
 11) Redireccion forzada
-- Que demuestra:
-- Evidencia:
+- Que demuestra: Las peticiones HTTP (puerto 8080) se redirigen automaticamente a HTTPS (puerto 8443) con codigo 301
+- Evidencia: ![Redireccion HTTPS](./evidencias/10-redireccion-https.png)
 
 ---
 
