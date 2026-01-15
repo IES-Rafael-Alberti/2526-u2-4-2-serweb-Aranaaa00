@@ -13,6 +13,8 @@ services:
       # Certificados SSL autofirmados
       - ./nginx-selfsigned.crt:/etc/ssl/certs/nginx-selfsigned.crt:ro
       - ./nginx-selfsigned.key:/etc/ssl/private/nginx-selfsigned.key:ro
+      # Archivo de credenciales para autenticacion
+      - ./.htpasswd:/etc/nginx/.htpasswd:ro
     depends_on:
       - sftp
     restart: unless-stopped
